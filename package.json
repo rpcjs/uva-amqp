@@ -1,0 +1,34 @@
+{
+  "name": "uva-amqp",
+  "version": "0.1.0",
+  "description": "AMQP RPC driver for Node.js using the uva interface.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zkochan/uva-amqp.git"
+  },
+  "keywords": [
+    "rpc",
+    "amqp",
+    "uva"
+  ],
+  "author": {
+    "name": "Zoltan Kochan",
+    "email": "zoltan.kochan@gmail.com",
+    "url": "http://kochan.io"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zkochan/uva-amqp/issues"
+  },
+  "homepage": "https://github.com/zkochan/uva-amqp#readme",
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org"
+  },
+  "dependencies": {
+    "amqp": "^0.2.4",
+    "debug": "^2.2.0",
+    "state-emitter": "^0.3.0",
+    "uva": "^0.1.0"
+  }
+}
