@@ -1,6 +1,6 @@
 {
   "name": "uva-amqp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "AMQP RPC driver for Node.js using the uva interface.",
   "main": "index.js",
   "repository": {
@@ -29,6 +29,6 @@
     "amqp": "^0.2.4",
     "debug": "^2.2.0",
     "state-emitter": "^0.3.0",
-    "uva": "^0.1.0"
+    "uva": "^0.1.1"
   }
 }
