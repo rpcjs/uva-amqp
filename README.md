@@ -22,7 +22,8 @@ Create a microservice for mathematical calculations and implement some remote me
 var Server = require('uva-amqp').Server;
 
 var server = Server({
-  channel: 'mathOperations'
+  channel: 'mathOperations',
+  url: 'amqp://guest:guest@localhost:5672'
 });
 
 server.addMethods({
@@ -45,7 +46,8 @@ Create a client for the math microservice and call some of its remote methods.
 var Client = require('uva-amqp').Client;
 
 var client = Client({
-  channel: 'mathOperations'
+  channel: 'mathOperations',
+  url: 'amqp://guest:guest@localhost:5672'
 });
 client.register(['sum', 'factorial']);
 
