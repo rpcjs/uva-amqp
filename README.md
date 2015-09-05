@@ -2,8 +2,8 @@
 
 The [uva][] RPC interface implementation for AMQP.
 
-[![Dependency Status](https://david-dm.org/zkochan/uva-amqp.svg)](https://david-dm.org/zkochan/uva-amqp)
-[![Build Status](https://travis-ci.org/zkochan/uva-amqp.svg?branch=master)](https://travis-ci.org/zkochan/uva-amqp)
+[![Dependency Status](https://david-dm.org/rpcjs/uva-amqp.svg)](https://david-dm.org/rpcjs/uva-amqp)
+[![Build Status](https://travis-ci.org/rpcjs/uva-amqp.svg?branch=master)](https://travis-ci.org/rpcjs/uva-amqp)
 [![npm version](https://badge.fury.io/js/uva-amqp.svg)](http://badge.fury.io/js/uva-amqp)
 
 
@@ -66,4 +66,4 @@ Math.factorial(10, function (err, result) {
 The MIT License (MIT)
 
 
-[uva]: https://github.com/zkochan/uva
+[uva]: https://github.com/rpcjs/uva

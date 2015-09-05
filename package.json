@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zkochan/uva-amqp.git"
+    "url": "git+https://github.com/rpcjs/uva-amqp.git"
   },
   "keywords": [
     "rpc",
@@ -19,16 +19,14 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zkochan/uva-amqp/issues"
+    "url": "https://github.com/rpcjs/uva-amqp/issues"
   },
-  "homepage": "https://github.com/zkochan/uva-amqp#readme",
+  "homepage": "https://github.com/rpcjs/uva-amqp#readme",
   "publishConfig": {
     "registry": "http://registry.npmjs.org"
   },
   "dependencies": {
-    "amqp": "^0.2.4",
-    "debug": "^2.2.0",
-    "state-emitter": "^0.3.0",
-    "uva": "^0.1.1"
+    "amqp-rpc": "git+https://git@github.com/zkochan/node-amqp-rpc#39428883145bba4a6a3dde712cf9f9722f76bf62",
+    "debug": "^2.2.0"
   }
 }
