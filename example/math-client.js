@@ -3,6 +3,7 @@
 var Client = require('../lib/client');
 
 var client = new Client({
+  channel: 'math',
   amqpURL: 'amqp://guest:guest@localhost:5672'
 });
 
