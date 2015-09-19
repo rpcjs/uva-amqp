@@ -27,10 +27,10 @@ var server = Server({
 });
 
 server.addMethods({
-  sum: function (a, b, cb) {
+  sum: function(a, b, cb) {
     cb(null, a + b);
   },
-  factorial: function (n, cb) {
+  factorial: function(n, cb) {
     var f = 1;
     for (var i = 2; i <= n; i++) {
       f *= i;
@@ -53,12 +53,15 @@ client.register(['sum', 'factorial']);
 
 var Math = client.methods;
 
-Math.sum(12, 2, function (err, sum) {
+Math.sum(12, 2, function(err, sum) {
   console.log(sum);
 });
 
-Math.factorial(10, function (err, result) {
+/* if the last argument is not a callback, the function will return a promise */
+Math.factorial(10).then(function(result) {
   console.log(result);
+}, function(err) {
+  console.error(err);
 });
 ```
 

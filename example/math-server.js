@@ -8,6 +8,6 @@ var server = new Server({
 });
 server.addMethods({
   sum: function(a, b, cb) {
-    cb(a + b);
+    cb(null, a + b);
   }
 });

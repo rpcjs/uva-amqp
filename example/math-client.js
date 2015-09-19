@@ -9,6 +9,12 @@ var client = new Client({
 
 client.register('sum');
 
-client.methods.sum(1, 2, function(result) {
+client.methods.sum(1, 2, function(err, result) {
   console.log('sum = ', result);
 });
+
+client.methods.sum(1, 2)
+  .then(function(result) {
+    console.log('got result through promise');
+    console.log('sum = ', result);
+  });
