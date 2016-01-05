@@ -1,10 +1,10 @@
 'use strict';
 
-var Client = require('../lib/client');
+const Client = require('../lib/client');
 
-var client = new Client({
+let client = new Client({
   channel: 'math',
-  url: 'amqp://guest:guest@localhost:5672'
+  url: 'amqp://guest:guest@localhost:5672',
 });
 
 client.register('sum');
