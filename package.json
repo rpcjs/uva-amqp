@@ -26,8 +26,8 @@
     "registry": "http://registry.npmjs.org"
   },
   "dependencies": {
-    "amqp-rpc": "git+https://git@github.com/zkochan/node-amqp-rpc#39428883145bba4a6a3dde712cf9f9722f76bf62",
     "debug": "^2.2.0",
+    "qpc": "^0.1.0",
     "thenify": "^3.1.0"
   }
 }
