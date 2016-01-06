@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
-exports.Client = require('./lib/client');
-exports.Server = require('./lib/server');
+exports.Client = require('./lib/client')
+exports.Server = require('./lib/server')
