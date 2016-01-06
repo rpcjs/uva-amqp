@@ -17,4 +17,5 @@ client.methods.sum(1, 2)
   .then(function(result) {
     console.log('got result through promise');
     console.log('sum = ', result);
-  });
+  })
+  .catch(err => console.error(err));
