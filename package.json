@@ -12,6 +12,10 @@
     "amqp",
     "uva"
   ],
+  "files": [
+    "lib",
+    "index.js"
+  ],
   "author": {
     "name": "Zoltan Kochan",
     "email": "zoltan.kochan@gmail.com",
