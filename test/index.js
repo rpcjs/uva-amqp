@@ -25,4 +25,19 @@ describe('uva-amqp', function() {
       done()
     })
   })
+
+  it('should return a timeout if no response has been recieved in time', function(done) {
+    let client = new uva.Client({
+      channel: 'foo',
+      url: 'amqp://guest:guest@localhost:5672',
+      ttl: 100,
+    })
+
+    client.register(['bar'])
+
+    client.methods.bar(function(err, result) {
+      expect(err).to.be.instanceOf(Error)
+      done()
+    })
+  })
 })
