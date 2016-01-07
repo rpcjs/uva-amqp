@@ -7,7 +7,7 @@ let server = new Server({
   url: 'amqp://guest:guest@localhost:5672',
 })
 server.addMethods({
-  sum: function(a, b, cb) {
+  sum(a, b, cb) {
     cb(null, a + b)
   },
 })

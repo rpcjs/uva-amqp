@@ -16,6 +16,9 @@
     "lib",
     "index.js"
   ],
+  "scripts": {
+    "test": "mocha test/**/*.js"
+  },
   "author": {
     "name": "Zoltan Kochan",
     "email": "zoltan.kochan@gmail.com",
@@ -33,5 +36,9 @@
     "debug": "^2.2.0",
     "qpc": "^0.2.0",
     "thenify": "^3.1.0"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4"
   }
 }
