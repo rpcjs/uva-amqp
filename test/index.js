@@ -4,6 +4,8 @@ const uva = require('../')
 
 describe('uva-amqp', function() {
   it('should successfully call a remote function', function(done) {
+    this.timeout(1e4)
+
     let server = new uva.Server({
       channel: 'math',
       url: 'amqp://guest:guest@localhost:5672',
