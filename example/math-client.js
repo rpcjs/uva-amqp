@@ -1,5 +1,4 @@
 'use strict'
-
 const Client = require('../lib/client')
 
 let client = new Client({

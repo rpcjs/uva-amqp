@@ -1,5 +1,4 @@
 'use strict'
-
 const expect = require('chai').expect
 const uva = require('../')
 
@@ -39,5 +38,19 @@ describe('uva-amqp', function() {
       expect(err).to.be.instanceOf(Error)
       done()
     })
+  })
+
+  it('should return promise if last argunent not a callback', function() {
+    let client = new uva.Client({
+      channel: 'foo',
+      url: 'amqp://guest:guest@localhost:5672',
+      ttl: 100,
+    })
+
+    client.register(['bar'])
+
+    let promise = client.methods.bar(1)
+
+    expect(promise).to.be.an.instanceOf(Promise)
   })
 })
