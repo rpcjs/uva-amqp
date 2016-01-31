@@ -59,7 +59,7 @@ describe('uva-amqp', function() {
     expect(res).to.be.rejectedWith(Error).notify(done)
   })
 
-  it('should return promise if last argunent not a callback', function() {
+  it('should return promise if last argument not a callback', function() {
     let client = new uva.Client({
       channel: 'foo',
       url: 'amqp://guest:guest@localhost:5672',
