@@ -1,20 +1,21 @@
 'use strict'
 const uva = require('..')
 
-let client = uva.client({
+uva.client({
   channel: 'math',
   url: 'amqp://guest:guest@localhost:5672',
 })
+.then(client => {
+  client.register('sum')
 
-client.register('sum')
-
-client.methods.sum(1, 2, function(err, result) {
-  console.log('sum = ', result)
-})
-
-client.methods.sum(1, 2)
-  .then(function(result) {
-    console.log('got result through promise')
+  client.methods.sum(1, 2, function(err, result) {
     console.log('sum = ', result)
   })
-  .catch(err => console.error(err))
+
+  client.methods.sum(1, 2)
+    .then(function(result) {
+      console.log('got result through promise')
+      console.log('sum = ', result)
+    })
+    .catch(err => console.error(err))
+})

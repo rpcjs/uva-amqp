@@ -22,22 +22,23 @@ Create a microservice for mathematical calculations and implement some remote me
 ``` js
 const uva = require('uva-amqp')
 
-let server = uva.server({
+uva.server({
   channel: 'mathOperations',
   url: 'amqp://guest:guest@localhost:5672',
 })
-
-server.addMethods({
-  sum(a, b, cb) {
-    cb(null, a + b)
-  },
-  factorial(n, cb) {
-    let f = 1
-    for (let i = 2; i <= n; i++) {
-      f *= i
-    }
-    cb(null, f)
-  },
+.then(server => {
+  server.addMethods({
+    sum(a, b, cb) {
+      cb(null, a + b)
+    },
+    factorial(n, cb) {
+      let f = 1
+      for (let i = 2; i <= n; i++) {
+        f *= i
+      }
+      cb(null, f)
+    },
+  })
 })
 ```
 
@@ -46,23 +47,25 @@ Create a client for the math microservice and call some of its remote methods.
 ``` js
 const uva = require('uva-amqp')
 
-let client = uva.client({
+uva.client({
   channel: 'mathOperations',
   url: 'amqp://guest:guest@localhost:5672',
 })
-client.register(['sum', 'factorial'])
+.then(client => {
+  client.register(['sum', 'factorial'])
 
-let Math = client.methods
+  let Math = client.methods
 
-Math.sum(12, 2, function(err, sum) {
-  console.log(sum)
-})
+  Math.sum(12, 2, function(err, sum) {
+    console.log(sum)
+  })
 
-/* if the last argument is not a callback, the function will return a promise */
-Math.factorial(10).then(function(result) {
-  console.log(result)
-}, function(err) {
-  console.error(err)
+  /* if the last argument is not a callback, the function will return a promise */
+  Math.factorial(10).then(function(result) {
+    console.log(result)
+  }, function(err) {
+    console.error(err)
+  })
 })
 ```
 

@@ -37,7 +37,7 @@
   "dependencies": {
     "chalk": "^1.1.1",
     "debug": "^2.2.0",
-    "qpc": "^0.3.0",
+    "qpc": "^0.4.1",
     "thenify": "^3.1.0"
   },
   "devDependencies": {
