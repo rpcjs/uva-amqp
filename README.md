@@ -5,6 +5,7 @@ The [uva][] RPC interface implementation for AMQP.
 [![Dependency Status](https://david-dm.org/rpcjs/uva-amqp.svg)](https://david-dm.org/rpcjs/uva-amqp)
 [![Build Status](https://travis-ci.org/rpcjs/uva-amqp.svg?branch=master)](https://travis-ci.org/rpcjs/uva-amqp)
 [![npm version](https://badge.fury.io/js/uva-amqp.svg)](http://badge.fury.io/js/uva-amqp)
+[![Coverage Status](https://coveralls.io/repos/github/rpcjs/uva-amqp/badge.svg?branch=master)](https://coveralls.io/github/rpcjs/uva-amqp?branch=master)
 
 
 ## Installation
