@@ -1,7 +1,7 @@
 'use strict'
 const chai = require('chai')
 const expect = chai.expect
-const uva = require('../')
+const uva = require('..')
 
 chai.use(require('chai-as-promised'))
 
@@ -9,14 +9,14 @@ describe('uva-amqp', function() {
   it('should successfully call a remote function', function(done) {
     this.timeout(1e4)
 
-    let server = new uva.Server({
+    let server = uva.server({
       channel: 'math',
       url: 'amqp://guest:guest@localhost:5672',
     })
 
     server.addMethod('sum', (a, b, cb) => cb(null, a + b))
 
-    let client = new uva.Client({
+    let client = uva.client({
       channel: 'math',
       url: 'amqp://guest:guest@localhost:5672',
     })
@@ -31,7 +31,7 @@ describe('uva-amqp', function() {
   })
 
   it('should return a timeout if no response has been recieved in time', function(done) {
-    let client = new uva.Client({
+    let client = uva.client({
       channel: 'foo',
       url: 'amqp://guest:guest@localhost:5672',
       ttl: 100,
@@ -46,7 +46,7 @@ describe('uva-amqp', function() {
   })
 
   it('should reject if no response has been recieved in time', function(done) {
-    let client = new uva.Client({
+    let client = uva.client({
       channel: 'foo',
       url: 'amqp://guest:guest@localhost:5672',
       ttl: 100,
@@ -60,7 +60,7 @@ describe('uva-amqp', function() {
   })
 
   it('should return promise if last argument not a callback', function() {
-    let client = new uva.Client({
+    let client = uva.client({
       channel: 'foo',
       url: 'amqp://guest:guest@localhost:5672',
       ttl: 100,

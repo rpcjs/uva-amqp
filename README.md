@@ -20,9 +20,9 @@ npm install --save uva-amqp
 Create a microservice for mathematical calculations and implement some remote methods.
 
 ``` js
-const Server = require('uva-amqp').Server
+const uva = require('uva-amqp')
 
-let server = new Server({
+let server = uva.server({
   channel: 'mathOperations',
   url: 'amqp://guest:guest@localhost:5672',
 })
@@ -44,9 +44,9 @@ server.addMethods({
 Create a client for the math microservice and call some of its remote methods.
 
 ``` js
-const Client = require('uva-amqp').Client
+const uva = require('uva-amqp')
 
-let client = new Client({
+let client = uva.client({
   channel: 'mathOperations',
   url: 'amqp://guest:guest@localhost:5672',
 })

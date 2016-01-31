@@ -1,7 +1,7 @@
 'use strict'
-const Client = require('../lib/client')
+const uva = require('..')
 
-let client = new Client({
+let client = uva.client({
   channel: 'math',
   url: 'amqp://guest:guest@localhost:5672',
 })

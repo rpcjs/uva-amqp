@@ -1,7 +1,7 @@
 'use strict'
-const Server = require('../lib/server')
+const uva = require('..')
 
-let server = new Server({
+let server = uva.server({
   channel: 'math',
   url: 'amqp://guest:guest@localhost:5672',
 })
