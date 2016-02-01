@@ -11,20 +11,19 @@ describe('uva-amqp', function() {
 
     return uva.server({
       channel: 'math',
-      url: 'amqp://guest:guest@localhost:5672',
+      amqpURL: 'amqp://guest:guest@localhost:5672',
     })
     .then(server => {
       server.addMethod('sum', (a, b, cb) => cb(null, a + b))
+      server.start()
 
       return uva.client({
         channel: 'math',
-        url: 'amqp://guest:guest@localhost:5672',
+        amqpURL: 'amqp://guest:guest@localhost:5672',
       })
     })
     .then(client => {
-      client.register(['sum'])
-
-      client.methods.sum(1, 2, function(err, result) {
+      client.sum(1, 2, function(err, result) {
         expect(err).to.not.exist
         expect(result).to.eq(3)
         done()
@@ -35,13 +34,12 @@ describe('uva-amqp', function() {
   it('should return a timeout if no response has been recieved in time', function(done) {
     return uva.client({
       channel: 'foo',
-      url: 'amqp://guest:guest@localhost:5672',
+      amqpURL: 'amqp://guest:guest@localhost:5672',
       ttl: 100,
+      register: ['bar'],
     })
     .then(client => {
-      client.register(['bar'])
-
-      client.methods.bar(function(err, result) {
+      client.bar(function(err, result) {
         expect(err).to.be.instanceOf(Error)
         done()
       })
@@ -51,13 +49,12 @@ describe('uva-amqp', function() {
   it('should reject if no response has been recieved in time', function(done) {
     return uva.client({
       channel: 'foo',
-      url: 'amqp://guest:guest@localhost:5672',
+      amqpURL: 'amqp://guest:guest@localhost:5672',
       ttl: 100,
+      register: ['bar'],
     })
     .then(client => {
-      client.register(['bar'])
-
-      let res = client.methods.bar()
+      let res = client.bar()
 
       expect(res).to.be.rejectedWith(Error).notify(done)
     })
@@ -66,13 +63,12 @@ describe('uva-amqp', function() {
   it('should return promise if last argument not a callback', function() {
     return uva.client({
       channel: 'foo',
-      url: 'amqp://guest:guest@localhost:5672',
+      amqpURL: 'amqp://guest:guest@localhost:5672',
       ttl: 100,
+      register: ['bar'],
     })
     .then(client => {
-      client.register(['bar'])
-
-      let promise = client.methods.bar(1)
+      let promise = client.bar(1)
 
       expect(promise).to.be.an.instanceOf(Promise)
     })

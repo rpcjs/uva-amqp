@@ -3,16 +3,14 @@ const uva = require('..')
 
 uva.client({
   channel: 'math',
-  url: 'amqp://guest:guest@localhost:5672',
+  amqpURL: 'amqp://guest:guest@localhost:5672',
 })
 .then(client => {
-  client.register('sum')
-
-  client.methods.sum(1, 2, function(err, result) {
+  client.sum(1, 2, function(err, result) {
     console.log('sum = ', result)
   })
 
-  client.methods.sum(1, 2)
+  client.sum(1, 2)
     .then(function(result) {
       console.log('got result through promise')
       console.log('sum = ', result)

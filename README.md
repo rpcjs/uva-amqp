@@ -24,7 +24,7 @@ const uva = require('uva-amqp')
 
 uva.server({
   channel: 'mathOperations',
-  url: 'amqp://guest:guest@localhost:5672',
+  amqpURL: 'amqp://guest:guest@localhost:5672',
 })
 .then(server => {
   server.addMethods({
@@ -39,6 +39,7 @@ uva.server({
       cb(null, f)
     },
   })
+  server.start()
 })
 ```
 
@@ -49,19 +50,15 @@ const uva = require('uva-amqp')
 
 uva.client({
   channel: 'mathOperations',
-  url: 'amqp://guest:guest@localhost:5672',
+  amqpURL: 'amqp://guest:guest@localhost:5672',
 })
-.then(client => {
-  client.register(['sum', 'factorial'])
-
-  let Math = client.methods
-
-  Math.sum(12, 2, function(err, sum) {
+.then(math => {
+  math.sum(12, 2, function(err, sum) {
     console.log(sum)
   })
 
   /* if the last argument is not a callback, the function will return a promise */
-  Math.factorial(10).then(function(result) {
+  math.factorial(10).then(function(result) {
     console.log(result)
   }, function(err) {
     console.error(err)

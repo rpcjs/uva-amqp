@@ -3,7 +3,7 @@ const uva = require('..')
 
 uva.server({
   channel: 'math',
-  url: 'amqp://guest:guest@localhost:5672',
+  amqpURL: 'amqp://guest:guest@localhost:5672',
 })
 .then(server => {
   server.addMethods({
@@ -11,4 +11,5 @@ uva.server({
       cb(null, a + b)
     },
   })
+  server.start()
 })
