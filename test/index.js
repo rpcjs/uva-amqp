@@ -31,6 +31,47 @@ describe('uva-amqp', function() {
     })
   })
 
+  it('should call remote function of the correct server', function(done) {
+    this.timeout(1e4)
+
+    let huClient
+
+    return uva.server({
+      channel: 'hungary',
+      amqpURL: 'amqp://guest:guest@localhost:5672',
+    })
+    .then(server => {
+      server.addMethod('capital', cb => cb(null, 'Budapest'))
+      server.start()
+
+      return uva.server({
+        channel: 'austria',
+        amqpURL: 'amqp://guest:guest@localhost:5672',
+      })
+    })
+    .then(server => {
+      server.addMethod('capital', cb => cb(null, 'Vienna'))
+      server.start()
+
+      return uva.client({
+        channel: 'hungary',
+        amqpURL: 'amqp://guest:guest@localhost:5672',
+      })
+    })
+    .then(client => {
+      huClient = client
+      return client.capital()
+    })
+    .then(capital => {
+      expect(capital).to.eq('Budapest')
+      return huClient.capital()
+    })
+    .then(capital => {
+      expect(capital).to.eq('Budapest')
+      done()
+    })
+  })
+
   it('should return a timeout if no response has been recieved in time', function(done) {
     return uva.client({
       channel: 'foo',
