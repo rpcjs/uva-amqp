@@ -1,12 +1,14 @@
 'use strict'
+const describe = require('mocha').describe
+const it = require('mocha').it
 const chai = require('chai')
 const expect = chai.expect
 const uva = require('..')
 
 chai.use(require('chai-as-promised'))
 
-describe('uva-amqp', function() {
-  it('should successfully call a remote function', function(done) {
+describe('uva-amqp', function () {
+  it('should successfully call a remote function', function (done) {
     this.timeout(1e4)
 
     return uva.server({
@@ -23,7 +25,7 @@ describe('uva-amqp', function() {
       })
     })
     .then(client => {
-      client.sum(1, 2, function(err, result) {
+      client.sum(1, 2, function (err, result) {
         expect(err).to.not.exist
         expect(result).to.eq(3)
         done()
@@ -31,7 +33,7 @@ describe('uva-amqp', function() {
     })
   })
 
-  it('should call remote function of the correct server', function(done) {
+  it('should call remote function of the correct server', function (done) {
     this.timeout(1e4)
 
     let huClient
@@ -72,7 +74,7 @@ describe('uva-amqp', function() {
     })
   })
 
-  it('should return a timeout if no response has been recieved in time', function(done) {
+  it('should return a timeout if no response has been recieved in time', function (done) {
     return uva.client({
       channel: 'foo',
       amqpURL: 'amqp://guest:guest@localhost:5672',
@@ -80,14 +82,14 @@ describe('uva-amqp', function() {
       register: ['bar'],
     })
     .then(client => {
-      client.bar(function(err, result) {
+      client.bar(function (err, result) {
         expect(err).to.be.instanceOf(Error)
         done()
       })
     })
   })
 
-  it('should reject if no response has been recieved in time', function(done) {
+  it('should reject if no response has been recieved in time', function (done) {
     return uva.client({
       channel: 'foo',
       amqpURL: 'amqp://guest:guest@localhost:5672',
@@ -101,7 +103,7 @@ describe('uva-amqp', function() {
     })
   })
 
-  it('should return promise if last argument not a callback', function() {
+  it('should return promise if last argument not a callback', function () {
     return uva.client({
       channel: 'foo',
       amqpURL: 'amqp://guest:guest@localhost:5672',

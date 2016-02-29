@@ -53,14 +53,14 @@ uva.client({
   amqpURL: 'amqp://guest:guest@localhost:5672',
 })
 .then(math => {
-  math.sum(12, 2, function(err, sum) {
+  math.sum(12, 2, function (err, sum) {
     console.log(sum)
   })
 
   /* if the last argument is not a callback, the function will return a promise */
-  math.factorial(10).then(function(result) {
+  math.factorial(10).then(function (result) {
     console.log(result)
-  }, function(err) {
+  }, function (err) {
     console.error(err)
   })
 })

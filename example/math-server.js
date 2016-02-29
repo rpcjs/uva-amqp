@@ -7,7 +7,7 @@ uva.server({
 })
 .then(server => {
   server.addMethods({
-    sum(a, b, cb) {
+    sum (a, b, cb) {
       cb(null, a + b)
     },
   })

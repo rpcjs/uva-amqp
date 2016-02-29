@@ -6,12 +6,10 @@ uva.client({
   amqpURL: 'amqp://guest:guest@localhost:5672',
 })
 .then(client => {
-  client.sum(1, 2, function(err, result) {
-    console.log('sum = ', result)
-  })
+  client.sum(1, 2, (err, result) => console.log('sum = ', result))
 
   client.sum(1, 2)
-    .then(function(result) {
+    .then(result => {
       console.log('got result through promise')
       console.log('sum = ', result)
     })
