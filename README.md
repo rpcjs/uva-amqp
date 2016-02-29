@@ -69,7 +69,7 @@ uva.client({
 
 ## License
 
-The MIT License (MIT)
+MIT © [Zoltan Kochan](https://www.kochan.io)
 
 
 [uva]: https://github.com/rpcjs/uva
