@@ -37,14 +37,14 @@
   "dependencies": {
     "chalk": "^1.1.1",
     "debug": "^2.2.0",
-    "qpc": "^0.4.1",
-    "thenify": "^3.1.0"
+    "qpc": "^1.0.0",
+    "thenify": "^3.2.0"
   },
   "devDependencies": {
-    "chai": "^3.4.1",
+    "chai": "^3.5.0",
     "chai-as-promised": "^5.2.0",
-    "coveralls": "^2.11.6",
+    "coveralls": "^2.11.8",
     "istanbul": "^0.4.2",
-    "mocha": "^2.3.4"
+    "mocha": "^2.4.5"
   }
 }
